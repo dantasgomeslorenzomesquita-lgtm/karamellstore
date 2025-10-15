@@ -33,6 +33,12 @@
     .badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
     .badge{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--accent-2)}
 
+    /* Serviços */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .service{background:rgba(255,255,255,0.01);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .service h4{margin:0 0 6px 0}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
     /* Layout */
     main{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
@@ -51,7 +57,8 @@
     footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 
     /* responsive */
-    @media (max-width:980px){main{grid-template-columns:1fr;}.hero{flex-direction:column;align-items:flex-start}.nav-btn{display:none}.logo .mark{width:56px;height:56px}}
+    @media (max-width:980px){main{grid-template-columns:1fr;}.hero{flex-direction:column;align-items:flex-start}.nav-btn{display:none}.logo .mark{width:56px;height:56px}.services{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.services{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -68,6 +75,7 @@
       <nav>
         <button class="nav-btn" onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'})">Sobre</button>
         <button class="nav-btn" onclick="document.getElementById('atividades').scrollIntoView({behavior:'smooth'})">Atividades</button>
+        <button class="nav-btn" onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Serviços</button>
         <button class="nav-btn" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</button>
       </nav>
     </header>
@@ -91,6 +99,38 @@
           <button class="btn btn-primary" onclick="location.href='mailto:adm.karamell@gmail.com'">Enviar E-mail</button>
           <button class="btn btn-ghost" onclick="openMap()">Ver no Maps</button>
         </div>
+
+        <!-- Principais Serviços -->
+        <div id="servicos" style="margin-top:18px">
+          <h3 style="margin:0 0 10px 0">Principais Serviços</h3>
+          <div class="services">
+            <div class="service">
+              <h4>Venda por atacado</h4>
+              <p>Fornecimento de doces em grandes quantidades para festas, lojas e revendedores.</p>
+            </div>
+            <div class="service">
+              <h4>Cestas e kits para presente</h4>
+              <p>Montagem personalizada de cestas de doces e kits comemorativos para empresas e eventos.</p>
+            </div>
+            <div class="service">
+              <h4>Personalização de embalagens</h4>
+              <p>Etiquetas e embalagens personalizadas para marcas ou ocasiões especiais.</p>
+            </div>
+            <div class="service">
+              <h4>Atendimento a eventos</h4>
+              <p>Serviço para festas, casamentos e eventos corporativos com opção de mesa de doces.</p>
+            </div>
+            <div class="service">
+              <h4>Loja física</h4>
+              <p>Atendimento presencial com pronta-entrega de doces, guloseimas e bebidas.</p>
+            </div>
+            <div class="service">
+              <h4>Entrega local</h4>
+              <p>Entrega rápida na região de São Bernardo do Campo e bairros próximos.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div style="width:320px;">
@@ -175,11 +215,12 @@
     </main>
 
     <footer>
-      <div class="muted">Dados apresentados conforme informação fornecida. Para uso legal, fiscal ou jurídico verifique as fontes oficiais (Receita Federal / Junta Comercial).</div>
+      <div style="font-size:13px;color:var(--muted)">© <span id="year"></span> Karamell Store</div>
     </footer>
   </div>
 
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     function openMap(){
       const q = encodeURIComponent('Avenida Presidente Arthur Bernardes, 212, São Bernardo do Campo, SP 09618-000');
       window.open('https://www.google.com/maps/search/?api=1&query='+q,'_blank');
