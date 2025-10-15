@@ -1,235 +1,111 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Karamell Store — Perfil da Empresa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724; /* dark navy */
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent1:#ff7a59; /* orange */
-      --accent2:#ffd166; /* warm yellow */
-      --glass: rgba(255,255,255,0.04);
-      --radius:16px;
-      color-scheme: dark;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,var(--bg),#061025); margin:0; color:#e6eef8; -webkit-font-smoothing:antialiased}
-    .page{max-width:1100px; margin:36px auto; padding:28px;}
-    header{display:flex;gap:24px;align-items:center}
-    .brand{display:flex;gap:16px;align-items:center}
-    .logo{width:86px;height:86px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#081225;font-size:30px;box-shadow:0 6px 22px rgba(0,0,0,0.6)}
-    h1{font-size:20px;margin:0}
-    .meta{color:var(--muted);font-size:13px}
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin, Mail, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 
-    .actions{margin-left:auto;display:flex;gap:10px}
-    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:12px;color:var(--accent2);cursor:pointer;font-weight:600}
-    .btn.ghost{background:transparent;border:1px dashed rgba(255,255,255,0.04);color:var(--muted)}
+export default function KaramellStoreSite() {
+  const empresa = {
+    nomeFantasia: "Karamell Store",
+    razaoSocial: "Emporio Karamell Importacao e Exportacao LTDA",
+    cnpj: "30.109.621/0001-79",
+    abertura: "04/04/2018",
+    capital: "R$ 100.000,00",
+    inscricaoEstadual: "799.376.885.114",
+    email: "adm.karamell@gmail.com",
+    telefone: "(11) 2294-9436",
+    endereco: "Avenida Presidente Arthur Bernardes, 212 — Rudge Ramos, São Bernardo do Campo / SP — 09618-000",
+    socio: "Ana Carolina Nunes de Queiroz",
+    naturezaJuridica: "Sociedade Empresária Limitada",
+    situacao: "Ativa",
+    atividades: [
+      "Comércio varejista de doces, balas, bombons e semelhantes",
+      "Comércio varejista de artigos de papelaria",
+      "Comércio varejista de artigos do vestuário e acessórios",
+      "Comércio varejista de cosméticos, produtos de perfumaria e de higiene pessoal",
+      "Comércio varejista de brinquedos e artigos recreativos",
+      "Comércio varejista de artigos de cama, mesa e banho",
+      "Comércio varejista de bebidas"
+    ]
+  };
 
-    main{display:grid;grid-template-columns:1fr 380px;gap:22px;margin-top:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-
-    .overview{display:flex;gap:18px;align-items:flex-start}
-    .info-list{display:grid;gap:8px}
-    .k{color:var(--muted);font-size:13px}
-    .v{font-weight:700}
-
-    .grid-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-    aside .card + .card{margin-top:16px}
-
-    .cnae-list{list-style:none;padding:0;margin:8px 0 0 0}
-    .cnae-list li{padding:10px;border-radius:10px;background:rgba(255,255,255,0.014);margin-bottom:8px;font-size:14px}
-
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;font-size:13px}
-
-    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
-
-    /* responsive */
-    @media (max-width:980px){main{grid-template-columns:1fr;}.actions{display:none}.logo{width:64px;height:64px}}
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="logo">K</div>
-        <div>
-          <h1>Karamell Store — Emporio Karamell Importacao e Exportacao LTDA</h1>
-          <div class="meta">CNPJ: <strong>30.109.621/0001-79</strong> · Ativa desde 04/04/2018</div>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 text-gray-800">
+      <header className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white py-10 shadow-xl">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+          <motion.h1
+            className="text-5xl font-extrabold tracking-tight"
+            initial={{ y: -40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            {empresa.nomeFantasia}
+          </motion.h1>
+          <p className="text-lg mt-3">{empresa.razaoSocial}</p>
+          <p className="text-sm opacity-90 mt-1">CNPJ: {empresa.cnpj} · Situação: {empresa.situacao}</p>
         </div>
-      </div>
+      </header>
 
-      <div class="actions">
-        <button class="btn" onclick="copyHTML()">Copiar HTML</button>
-        <button class="btn ghost" onclick="window.print()">Imprimir</button>
-      </div>
-    </header>
+      <main className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-6">
+        <section className="md:col-span-2 space-y-6">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle>Informações da Empresa</CardTitle>
+            </CardHeader>
+            <CardContent className="grid sm:grid-cols-2 gap-4">
+              <p><strong>Data de Abertura:</strong> {empresa.abertura}</p>
+              <p><strong>Capital Social:</strong> {empresa.capital}</p>
+              <p><strong>Inscrição Estadual:</strong> {empresa.inscricaoEstadual}</p>
+              <p><strong>Natureza Jurídica:</strong> {empresa.naturezaJuridica}</p>
+              <p><strong>Sócio-Administrador:</strong> {empresa.socio}</p>
+            </CardContent>
+          </Card>
 
-    <main>
-      <section>
-        <div class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div class="badge">Micro Empresa · Matriz</div>
-              <div style="margin-top:8px;color:var(--muted)">Razão Social: <strong>Emporio Karamell Importacao e Exportacao LTDA</strong></div>
-            </div>
-            <div style="text-align:right;color:var(--muted)">
-              Abertura: <div class="v">04/04/2018</div>
-              Situação: <div class="v">Ativa</div>
-            </div>
-          </div>
-
-          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-          <div class="overview">
-            <div style="flex:1">
-              <h3 style="margin:0 0 8px 0">Identificação</h3>
-              <div class="info-list">
-                <div><span class="k">Nome Fantasia:</span> <span class="v">Karamell Store</span></div>
-                <div><span class="k">CNPJ (numérico):</span> <span class="v">30109621000179</span></div>
-                <div><span class="k">Inscrição Estadual (SP):</span> <span class="v">799.376.885.114</span></div>
-                <div><span class="k">Capital Social:</span> <span class="v">R$ 100.000,00</span></div>
-                <div><span class="k">Opção Simples:</span> <span class="v">Sim (desde 04/04/2018)</span></div>
-              </div>
-
-              <h3 style="margin-top:18px">Quadro de Sócios / Administração</h3>
-              <div class="info-list">
-                <div><span class="k">Sócio-Administrador:</span> <span class="v">Ana Carolina Nunes de Queiroz</span></div>
-                <div><span class="k">Qualificação do responsável:</span> <span class="v">Sócio-Administrador</span></div>
-              </div>
-
-              <h3 style="margin-top:18px">Atividades (CNAEs)</h3>
-              <ul class="cnae-list">
-                <li><strong>Principal:</strong> 47.21-1-04 - Comércio varejista de doces, balas, bombons e semelhantes</li>
-                <li>47.61-0-03 - Comércio varejista de artigos de papelaria</li>
-                <li>47.81-4-00 - Comércio varejista de artigos do vestuário e acessórios</li>
-                <li>47.72-5-00 - Comércio varejista de cosméticos, produtos de perfumaria e de higiene pessoal</li>
-                <li>47.63-6-01 - Comércio varejista de brinquedos e artigos recreativos</li>
-                <li>47.55-5-03 - Comércio varejista de artigos de cama, mesa e banho</li>
-                <li>47.23-7-00 - Comércio varejista de bebidas</li>
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle>Atividades Econômicas (CNAEs)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc pl-5 space-y-2">
+                {empresa.atividades.map((a, i) => (
+                  <li key={i}>{a}</li>
+                ))}
               </ul>
-            </div>
+            </CardContent>
+          </Card>
+        </section>
 
-            <aside style="width:260px">
-              <div class="card">
-                <h4 style="margin:0 0 12px 0">Contatos</h4>
-                <div class="k">E-mail</div>
-                <div class="v">adm.karamell@gmail.com</div>
-                <div style="height:10px"></div>
-                <div class="k">Telefone</div>
-                <div class="v">(11) 2294-9436</div>
+        <aside className="space-y-6">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle>Contato</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="flex items-center gap-2"><Mail className="w-5 h-5 text-orange-500" /> {empresa.email}</p>
+              <p className="flex items-center gap-2"><Phone className="w-5 h-5 text-orange-500" /> {empresa.telefone}</p>
+              <p className="flex items-start gap-2"><MapPin className="w-5 h-5 text-orange-500" /> {empresa.endereco}</p>
+              <Button className="w-full bg-orange-500 hover:bg-orange-600" onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(empresa.endereco)}`)}>Ver no Maps</Button>
+            </CardContent>
+          </Card>
 
-                <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-                <div class="k">Filiais Ativas</div>
-                <div class="v" style="margin-top:6px">Karamell Store - 30.109.621/0002-50 (SP, São Paulo)</div>
+          <Card className="shadow-lg bg-orange-50 border border-orange-200">
+            <CardHeader>
+              <CardTitle className="text-orange-700">Resumo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>
+                A <strong>{empresa.nomeFantasia}</strong> é uma microempresa fundada em {empresa.abertura},
+                sediada em São Bernardo do Campo/SP. Atua principalmente no varejo de doces e produtos correlatos,
+                e mantém sua situação cadastral <strong>{empresa.situacao}</strong> junto à Receita Federal.
+              </p>
+            </CardContent>
+          </Card>
+        </aside>
+      </main>
 
-                <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-                <div class="k">Quadro Societário</div>
-                <div class="v">Ana Carolina Nunes de Queiroz — Sócio-Administrador</div>
-              </div>
-
-              <div class="card" style="margin-top:12px">
-                <h4 style="margin:0 0 12px 0">Localização</h4>
-                <div class="k">Endereço</div>
-                <div class="v">Avenida Presidente Arthur Bernardes, 212 — Rudge Ramos</div>
-                <div class="k" style="margin-top:8px">CEP / Município / Estado</div>
-                <div class="v">09618-000 — São Bernardo do Campo / SP</div>
-
-                <div style="margin-top:10px;font-size:13px;color:var(--muted)">Para correspondência:
-                  <div style="margin-top:6px">Karamell Store Emporio Karamell Importacao e Exportacao LTDA<br>Avenida Presidente Arthur Bernardes 212<br>Rudge Ramos — São Bernardo do Campo — SP — 09618-000</div>
-                </div>
-              </div>
-            </aside>
-          </div>
-
-          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-          <h3 style="margin:0 0 10px 0">Resumo</h3>
-          <p style="color:var(--muted);margin:0">A Karamell Store (Razão Social: Emporio Karamell Importacao e Exportacao LTDA) é uma microempresa aberta em 04/04/2018, com sede em São Bernardo do Campo — SP. Opera principalmente no varejo de doces e produtos correlatos, mantendo outras atividades de varejo listadas nos CNAEs. Situação cadastral: <strong>Ativa</strong>.</p>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3 style="margin-top:0">Dados Legais & Extras</h3>
-          <div class="grid-two">
-            <div>
-              <div class="k">Natureza Jurídica</div>
-              <div class="v">Sociedade Empresária Limitada</div>
-            </div>
-            <div>
-              <div class="k">Tipo</div>
-              <div class="v">Matriz</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px">
-            <div class="k">Situação Cadastral (data)</div>
-            <div class="v">Ativa — 04/04/2018</div>
-          </div>
-
-          <div style="margin-top:12px">
-            <div class="k">Observações</div>
-            <div class="v" style="font-weight:500;color:var(--muted);">Informações compiladas a partir do texto fornecido pelo usuário.</div>
-          </div>
-        </div>
-      </section>
-
-      <aside>
-        <div class="card">
-          <h3 style="margin:0 0 10px 0">Ações Rápidas</h3>
-          <p class="k">Use estes botões para ações práticas:</p>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
-            <button class="btn" onclick="location.href='mailto:adm.karamell@gmail.com'">Enviar E-mail</button>
-            <button class="btn ghost" onclick="openMap()">Abrir no Maps</button>
-            <button class="btn" onclick="copyAddress()">Copiar Endereço</button>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h4 style="margin:0 0 10px 0">Atividades em destaque</h4>
-          <p class="k" style="margin:0 0 8px 0">Principal: Comércio varejista de doces, balas, bombons e semelhantes</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <span class="badge">Doces</span>
-            <span class="badge">Papelaria</span>
-            <span class="badge">Vestuário</span>
-            <span class="badge">Cosméticos</span>
-            <span class="badge">Brinquedos</span>
-            <span class="badge">Cama Mesa Banho</span>
-            <span class="badge">Bebidas</span>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px;text-align:center">
-          <div style="font-size:12px;color:var(--muted)">Gerado em:</div>
-          <div class="v" id="generatedDate"></div>
-        </div>
-      </aside>
-    </main>
-
-    <footer>
-      <div>Dados apresentados conforme informação fornecida pelo usuário. Verifique fontes oficiais para usos legais ou fiscais.</div>
-    </footer>
-  </div>
-
-  <script>
-    // populate generated date
-    document.getElementById('generatedDate').textContent = new Date().toLocaleString('pt-BR');
-
-    function openMap(){
-      const q = encodeURIComponent('Avenida Presidente Arthur Bernardes, 212, São Bernardo do Campo, SP 09618-000');
-      window.open('https://www.google.com/maps/search/?api=1&query='+q,'_blank');
-    }
-    function copyAddress(){
-      const txt = 'Avenida Presidente Arthur Bernardes, 212 - Rudge Ramos - São Bernardo do Campo - SP - 09618-000';
-      navigator.clipboard?.writeText(txt).then(()=>alert('Endereço copiado para área de transferência'));
-    }
-    function copyHTML(){
-      navigator.clipboard?.writeText(document.documentElement.outerHTML).then(()=>alert('HTML copiado para a área de transferência'));
-    }
-  </script>
-</body>
-</html>
+      <footer className="bg-orange-500 text-white py-4 text-center text-sm">
+        © {new Date().getFullYear()} {empresa.nomeFantasia}. Todos os direitos reservados.
+      </footer>
+    </div>
+  );
+}
